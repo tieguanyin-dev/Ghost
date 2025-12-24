@@ -1,20 +1,19 @@
 // # Ghost Startup
 // Orchestrates the startup of Ghost when run from command line.
 
-var startTime = Date.now(),
-    debug = require('ghost-ignition').debug('boot:index'),
-    ghost, express, common, urlService, parentApp;
+const startTime = Date.now();
+const debug = require('ghost-ignition').debug('boot:index');
 
 debug('First requires...');
 
-ghost = require('./core');
+const ghost = require('./core');
 
 debug('Required ghost');
 
-express = require('express');
-common = require('./core/server/lib/common');
-urlService = require('./core/server/services/url');
-parentApp = express();
+const express = require('express');
+const common = require('./core/server/lib/common');
+const urlService = require('./core/server/services/url');
+const parentApp = express();
 
 debug('Initialising Ghost');
 ghost().then(function (ghostServer) {

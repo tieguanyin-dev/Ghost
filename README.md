@@ -63,6 +63,16 @@ Not only will it save you hours of maintenance per month, but all revenue goes t
 
 If you want to run your own instance of Ghost, in most cases the best way is to use our **CLI tool**
 
+## Requirements
+
+- Node.js (LTS version recommended - check [official Ghost documentation](https://docs.ghost.org) for supported versions)
+- npm or yarn package manager
+- MySQL 5.7+ or SQLite 3 (for development)
+
+## Installation
+
+Install the Ghost CLI globally:
+
 ```
 $ npm install ghost-cli -g
 ```
@@ -103,9 +113,23 @@ To stay up to date with all the latest news and product updates, make sure you [
 
 For anyone wishing to contribute to Ghost or to hack/customise core files we recommend following our full development setup guides: [General Contributor Guide](https://docs.ghost.org/concepts/contributing) | [Developer Setup Instructions](https://docs.ghost.org/install/source) | [Admin Client development guide](https://docs.ghost.org/install/source/#ghost-admin)
 
+## Development Setup
+
+To set up Ghost for development:
+
+1. Clone the repository
+2. Run `yarn install` to install dependencies
+3. Run `yarn setup` to initialize the database and set up the development environment
+4. Run `yarn dev` to start Ghost in development mode with debugging enabled
+
+## Testing
+
+- Run `yarn test` to execute all tests
+- Run `yarn lint` to check code quality and style
+
 &nbsp;
 
 
 # Copyright & License
 
-Copyright (c) 2013-2019 Ghost Foundation - Released under the [MIT license](LICENSE). Ghost and the Ghost Logo are trademarks of Ghost Foundation Ltd. Please see our [trademark policy](https://ghost.org/trademark/) for info on acceptable usage.
+Copyright (c) 2013-2025 Ghost Foundation - Released under the [MIT license](LICENSE). Ghost and the Ghost Logo are trademarks of Ghost Foundation Ltd. Please see our [trademark policy](https://ghost.org/trademark/) for info on acceptable usage.
