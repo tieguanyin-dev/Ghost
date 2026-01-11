@@ -1,6 +1,10 @@
 # Ghost Local Development Setup Guide
 
-This guide will help you set up Ghost for local development on your machine.
+**Note**: This is Ghost version 2.21.1, which was designed for Node.js 6.9-10.13. If you're using a newer Node.js version (12+), some features like the admin client build may not work due to dependency compatibility. For a production-ready setup with the latest Ghost version, we recommend using the official [Ghost CLI](https://ghost.org/docs/ghost-cli/).
+
+This guide is designed to help you get the Ghost **frontend and API** running locally for development and testing purposes.
+
+---
 
 ## Prerequisites
 
@@ -153,26 +157,41 @@ npx knex-migrator init
 
 By default, Ghost uses SQLite3 for local development with the `config.development.json` configuration, so no additional database setup is required for older Node versions.
 
-### 5. Build the Admin Client
+### 5. Build the Admin Client (Optional)
 
-The admin client needs to be built before you can use it:
+**Important Note**: The admin client build may fail on Node.js 12+ due to dependency compatibility issues with this version of Ghost (2.21.1). There are two options:
+
+#### Option A: Use Ghost CLI (Recommended for Full Setup)
+
+For a complete Ghost installation with a working admin panel, use the official Ghost CLI:
 
 ```bash
-# Using yarn
-yarn setup
-
-# OR run individually
-grunt init
+npm install ghost-cli -g
+ghost install local
 ```
 
-Alternatively, if you want to work on the admin client separately:
+This will install a compatible version of Ghost with all dependencies properly configured.
+
+#### Option B: Manual Build (Advanced - May Fail on Node.js 12+)
+
+If you want to build the admin client manually for development:
 
 ```bash
 cd core/client
-yarn install
+yarn install --ignore-engines
+yarn build
 cd ../..
-grunt symlink
 ```
+
+**Note**: If the build fails with errors related to workerpool or other dependencies, it's a known compatibility issue with newer Node versions. Consider using Node.js 10.13.0 with nvm:
+
+```bash
+nvm install 10.13.0
+nvm use 10.13.0
+# Then retry the build
+```
+
+For this walkthrough, we'll proceed without the admin client to demonstrate the Ghost API and frontend functionality.
 
 ### 6. Start the Development Server
 
